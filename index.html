@@ -155,20 +155,20 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <form>
+            <form name="WPU-Kontak">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="nam" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="name" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="Email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="Pesan" rows="3"></textarea>
+                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
               </div>
-              <button type="submit" class="btn btn-successx">Kirim</button>
+              <button type="submit" class="btn btn-success">Kirim</button>
             </form>
           </div>
         </div>
@@ -190,5 +190,17 @@
     <!-- Ahkir Footer -->
 
     <!-- Optional JavaScript; choose one of the two! -->
+
+    <script>
+      const scriptURL = "<https://script.google.com/macros/s/AKfycbwuSuT54lYtpOIL_dR7kR3fpx2ZS0c76mmiKDJKgPZAiWjkmaCOvi4tGVFRFq8G1txdCw/exec>";
+      const form = document.forms["WPU-Kontak"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
